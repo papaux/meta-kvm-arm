@@ -26,6 +26,6 @@ PV = "3.12"
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
 MACHINE_KERNEL_PR_append = "f+gitr${SRCPV}"
 
-SRC_URI = "git://forge.tic.eia-fr.ch/git/geoffrey.papaux/linux-omap5.git;protocol=https;branch=${BRANCH} \
+SRC_URI = "git://forge.tic.eia-fr.ch/git/geoffrey.papaux/linux-omap5.git;protocol=ssh;branch=${BRANCH} \
            file://defconfig \
           "
