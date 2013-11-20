@@ -9,7 +9,7 @@ inherit kernel
 require recipes-kernel/linux/linux-dtb.inc
 require recipes-kernel/linux/setup-defconfig.inc
 
-KERNEL_DEVICETREE_omap5-evm = "arch/arm/boot/dts/omap5-uevm.dts"
+KERNEL_DEVICETREE = "arch/arm/boot/dts/omap5-uevm.dts"
 
 KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT}"
 
