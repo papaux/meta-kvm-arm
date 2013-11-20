@@ -6,7 +6,7 @@ require conf/machine/include/tune-cortexa15.inc
 # Increase this everytime you change something in the kernel
 MACHINE_KERNEL_PR = "r1"
 
-PREFERRED_PROVIDER_virtual/kernel = "linux-omap5-kvm"
+PREFERRED_PROVIDER_virtual/kernel = "linux-ti"
 PREFERRED_PROVIDER_virtual/bootloader = "u-boot-omap5-kvm"
 PREFERRED_PROVIDER_u-boot = "u-boot-omap5-kvm"
 
