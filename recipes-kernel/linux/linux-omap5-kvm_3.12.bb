@@ -13,6 +13,8 @@ KERNEL_DEVICETREE_omap5-evm = "arch/arm/boot/dts/omap5-uevm.dts"
 
 KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT}"
 
+KERNEL_FEATURES_append = " features/kvm/qemu-kvm-enable.scc"
+
 COMPATIBLE_MACHINE = "omap-a15"
 
 S = "${WORKDIR}/git"
@@ -26,6 +28,6 @@ PV = "3.12"
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
 MACHINE_KERNEL_PR_append = "f+gitr${SRCPV}"
 
-SRC_URI = "git://forge.tic.eia-fr.ch/git/geoffrey.papaux/linux-omap5.git;protocol=ssh;branch=${BRANCH} \
+SRC_URI = "git://forge.tic.eia-fr.ch/geoffrey.papaux/linux-omap5.git;protocol=ssh;branch=${BRANCH};user=git \
            file://defconfig \
           "
