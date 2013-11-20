@@ -1,5 +1,5 @@
-SECTION = "kernel"                                                                                                                                                               [0/1977]
-DESCRIPTION = "Custom Linux kernel for omap5 device and kvm"
+SECTION = "kernel"
+DESCRIPTION = "TI Linux kernel"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 KERNEL_IMAGETYPE = "uImage"
