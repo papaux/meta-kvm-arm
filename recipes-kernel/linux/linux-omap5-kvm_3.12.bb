@@ -19,15 +19,15 @@ COMPATIBLE_MACHINE = "omap-a15"
 
 S = "${WORKDIR}/git"
 
-BRANCH = "papaux/3.12-omap5-kvm"
+BRANCH = "3.12-omap5-kvm"
 
-# This commit corresponds to ti2013.04.02 release tag
+# This commit corresponds to v3.12-rc1-omap5-kvm release tag
 SRCREV = "4adcfa4b809bc8efa04884aa2518b2e7c9900e67"
-PV = "3.12"
+PV = "3.12-rc1"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
 MACHINE_KERNEL_PR_append = "f+gitr${SRCPV}"
 
-SRC_URI = "git://forge.tic.eia-fr.ch/geoffrey.papaux/linux-omap5.git;protocol=ssh;branch=${BRANCH};user=git \
+SRC_URI = "git://forge.tic.eia-fr.ch/git/geoffrey.papaux/linux-omap5.git;protocol=https;branch=${BRANCH} \
            file://defconfig \
           "
