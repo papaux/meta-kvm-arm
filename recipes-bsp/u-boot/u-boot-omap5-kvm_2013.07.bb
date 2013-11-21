@@ -2,7 +2,7 @@ require ${COREBASE}/meta-ti-glsdk/recipes-bsp/u-boot/u-boot-ti.inc
 
 DESCRIPTION = "Custom u-boot bootloader for omap5 with kvm support"
 
-PR = "r5+gitr${SRCPV}"
+PR = "r0+gitr${SRCPV}"
 
 SRC_URI = "git://forge.tic.eia-fr.ch/git/geoffrey.papaux/u-boot-omap5.git;protocol=https;branch=${BRANCH}"
 
