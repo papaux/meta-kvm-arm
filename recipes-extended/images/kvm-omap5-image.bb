@@ -10,7 +10,6 @@ IMAGE_INSTALL = " \
     perf \
     iperf \
     procps \
-    oprofile \
     "
 #    kernel-module-kvm \
 #    kernel-module-kvm-intel \
