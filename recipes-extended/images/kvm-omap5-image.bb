@@ -1,4 +1,4 @@
-DESCRIPTION = "A minimal kvm image"
+DESCRIPTION = "Image containing tools required for KVM virtualization with libvirt support. Comes with other benchmarking / performance debugging tools."
 
 IMAGE_INSTALL = " \
     packagegroup-core-boot \
@@ -10,6 +10,7 @@ IMAGE_INSTALL = " \
     perf \
     iperf \
     procps \
+    coreutils \
     "
 #    kernel-module-kvm \
 #    kernel-module-kvm-intel \
