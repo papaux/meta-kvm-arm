@@ -31,6 +31,7 @@ MACHINE_KERNEL_PR_append = "f+gitr${SRCPV}"
 SRC_URI = "git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git;protocol=git;branch=${BRANCH}  \
 	   file://0001-omap5-kvm-patch-dts-for-vgic-support-in-kvm.patch \
            file://0002-omap5-kvm-patch-for-lpae-support-in-platform-drivers.patch \
+	   file://0003-KVM-ARM-add-hardware-PMU-in-omap5-device-tree.patch \
            file://defconfig \
           "
 
