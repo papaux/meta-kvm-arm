@@ -1,0 +1,25 @@
+From 8be362e02cc3ea1ab7ec4c3fc274148fa50dbd37 Mon Sep 17 00:00:00 2001
+From: Geoffrey Papaux <geoffrey.papaux@gmail.com>
+Date: Wed, 20 Nov 2013 16:50:47 +0100
+Subject: [PATCH 1/2] omap5-kvm: patch dts for vgic support in kvm
+
+Patch from http://www.spinics.net/lists/linux-omap/msg97172.html
+---
+ arch/arm/boot/dts/omap5.dtsi |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/boot/dts/omap5.dtsi b/arch/arm/boot/dts/omap5.dtsi
+index 87e215b..2ec6ddb 100644
+--- a/arch/arm/boot/dts/omap5.dtsi
++++ b/arch/arm/boot/dts/omap5.dtsi
+@@ -80,6 +80,7 @@
+ 		      <0x48212000 0x1000>,
+ 		      <0x48214000 0x2000>,
+ 		      <0x48216000 0x2000>;
++		      interrupts = <GIC_PPI 9 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_LEVEL_HIGH)>;
+ 	};
+ 
+ 	/*
+-- 
+1.7.9.5
+
