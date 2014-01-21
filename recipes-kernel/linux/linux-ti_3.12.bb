@@ -22,8 +22,8 @@ S = "${WORKDIR}/git"
 BRANCH = "ti-linux-3.12.y"
 
 # A commit ID working at this time, we could try with newer commit ids... 
-SRCREV = "abf62fd7ffe1ea06669792c968d9d11e30dcd326"
-PV = "3.12.0"
+SRCREV = "8fcc14f028b1cf488351fcaf314ef1ad38211e51"
+PV = "3.12.4"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
 MACHINE_KERNEL_PR_append = "f+gitr${SRCPV}"
