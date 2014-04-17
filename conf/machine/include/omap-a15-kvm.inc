@@ -7,8 +7,8 @@ require conf/machine/include/tune-cortexa15.inc
 MACHINE_KERNEL_PR = "r3"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-ti-staging"
-PREFERRED_PROVIDER_virtual/bootloader = "u-boot-ti-staging"
-PREFERRED_PROVIDER_u-boot = "u-boot-ti-staging"
+PREFERRED_PROVIDER_virtual/bootloader = "u-boot-omap5-kvm"
+PREFERRED_PROVIDER_u-boot = "u-boot-omap5-kvm" 
 
 KERNEL_IMAGETYPE = "zImage"
 

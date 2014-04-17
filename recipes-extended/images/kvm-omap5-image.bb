@@ -17,6 +17,9 @@ IMAGE_INSTALL = " \
 #    kernel-module-kvm-amd \
 #    "
 
+# include kernel and u-boot, is this the correct way to do it ? 
+DEPENDS += "virtual/kernel u-boot"
+
 IMAGE_FEATURES += "ssh-server-openssh"
 
 IMAGE_LINGUAS = " "

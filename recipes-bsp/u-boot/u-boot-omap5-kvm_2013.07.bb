@@ -2,6 +2,8 @@ require ${COREBASE}/meta-ti/recipes-bsp/u-boot/u-boot-ti.inc
 
 DESCRIPTION = "Custom u-boot bootloader for omap5 with kvm support"
 
+
+PV = "2013.07"
 PR = "r0+gitr${SRCPV}"
 
 SRC_URI = "git://github.com/papaux/u-boot-omap5.git;protocol=https;branch=${BRANCH}"
