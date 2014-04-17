@@ -1,4 +1,4 @@
-require ${COREBASE}/meta-ti-glsdk/recipes-bsp/u-boot/u-boot-ti.inc
+require ${COREBASE}/meta-ti/recipes-bsp/u-boot/u-boot-ti.inc
 
 DESCRIPTION = "Custom u-boot bootloader for omap5 with kvm support"
 
