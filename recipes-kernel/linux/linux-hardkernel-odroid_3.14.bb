@@ -23,7 +23,7 @@ S = "${WORKDIR}/git"
 
 BRANCH = "odroid-3.14.y-linaro"
 
-SRCREV = "d66fd10dd31613ae4ec0d8e128c70dadb3411415"
+SRCREV = "f2083913678cde7c497401c148c0dd53106d9746"
 PV = "3.14.0"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
