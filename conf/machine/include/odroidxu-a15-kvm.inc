@@ -13,14 +13,9 @@ PREFERRED_PROVIDER_u-boot = "u-boot-odroidxu-kvm"
 KERNEL_IMAGETYPE = "uImage"
 
 UBOOT_ARCH = "arm"
-UBOOT_ENTRYPOINT = "0x80008000"
-UBOOT_LOADADDRESS = "0x80008000"
+UBOOT_ENTRYPOINT = "0x40008000"
+UBOOT_LOADADDRESS = "0x40008000"
 
 EXTRA_IMAGEDEPENDS += "virtual/bootloader"
-
-PREFERRED_PROVIDER_virtual/xserver = "xserver-xorg"
-XSERVER = "xserver-xorg \
-           xf86-input-evdev \
-           xf86-video-fbdev"
 
 GUI_MACHINE_CLASS = "smallscreen"
