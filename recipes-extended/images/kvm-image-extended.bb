@@ -28,6 +28,4 @@ LICENSE = "MIT"
 
 inherit core-image
 
-IMAGE_ROOTFS_SIZE = "8192"
-
-ROOTFS_POSTPROCESS_COMMAND += "remove_packaging_data_files ; "
+IMAGE_ROOTFS_SIZE = "512000"

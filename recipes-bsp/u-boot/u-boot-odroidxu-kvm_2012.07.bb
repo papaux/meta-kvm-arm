@@ -19,17 +19,17 @@ PV = "2012.07"
 PR = "r0+gitr${SRCPV}"
 
 BL1 = "bl1.hardkernel.bin.signed"
-BL2 = "bl2.u-boot-spl.bin"
+BL2 = "bl2.u-boot-spl.bin.signed"
 TZSW = "tzsw.hardkernel.bin.signed"
 BOOT_INI = "boot.ini"
-SD_FUSING = "sd_fusing.sh"
+SD_INST = "install_on_sd_card.sh"
 
 SRC_URI = "git://github.com/FiachAntaw/u-boot.git;protocol=https;branch=${BRANCH} \
 		   file://${BL1};md5=19f1c93ee20e2db728d397903515d3a1 \
 		   file://${BL2};md5=4d51f0923370232ef8734f8b9f7238a5 \
 		   file://${TZSW};md5=7059f00d2fee09e7f6117b269efd5ed3 \
 		   file://${BOOT_INI};md5=9197d6f8a352eca832eddc68ae3a7ada \
-		   file://${SD_FUSING};md5=b2559180516c686bc3c5f7d0831e5d06 \
+		   file://${SD_INST};md5=267b8e23add6932a0a069d9e24695f65 \
 		  "
 
 # This commit corresponds to odroid-v2012.07-virt latest commit at May 30 2014
@@ -46,5 +46,5 @@ do_deploy_append () {
     cp -v ${WORKDIR}/${BL2} ${DEPLOYDIR}
     cp -v ${WORKDIR}/${TZSW} ${DEPLOYDIR}
     cp -v ${WORKDIR}/${BOOT_INI} ${DEPLOYDIR}
-    cp -v ${WORKDIR}/${SD_FUSING} ${DEPLOYDIR}
+    cp -v ${WORKDIR}/${SD_INST} ${DEPLOYDIR}
 }
