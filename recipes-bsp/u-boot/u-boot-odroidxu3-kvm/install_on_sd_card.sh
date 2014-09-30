@@ -114,11 +114,11 @@ echo
 echo "Copy boot.ini, uImage, dtb to BOOT partition..."
 sudo cp -v boot.ini $bootmountpoint/
 sudo cp -v uImage $bootmountpoint/
-sudo cp -v uImage-exynos5410-odroidxu.dtb $bootmountpoint/exynos5410-odroidxu.dtb
+sudo cp -v uImage-exynos5422-odroidxu3.dtb $bootmountpoint/exynos5422-odroidxu3.dtb
 
 echo
-echo "Extract root file system (kvm-image-extended-odroidxu-kvm.tar.gz) to rootfs partition..."
-sudo tar xpf kvm-image-extended-odroidxu-kvm.tar.gz -C $rootmountpoint/
+echo "Extract root file system (kvm-image-extended-odroidxu3-kvm.tar.gz) to rootfs partition..."
+sudo tar xpf kvm-image-extended-odroidxu3-kvm.tar.gz -C $rootmountpoint/
 
 # sync to sd-card
 sync
@@ -127,7 +127,6 @@ sync
 sudo umount $bootdev
 sudo umount $rootdev
 sudo eject $device
-
 
 echo
 echo "Done. It is now safe to eject and remove your SD-Card."

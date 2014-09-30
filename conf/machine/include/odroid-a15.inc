@@ -1,14 +1,10 @@
-SOC_FAMILY = "odroidxu-a15"
+SOC_FAMILY = "odroid-a15"
 require conf/machine/include/soc-family.inc
 
 require conf/machine/include/tune-cortexa15.inc
 
 # Increase this everytime you change something in the kernel
 MACHINE_KERNEL_PR = "r0"
-
-PREFERRED_PROVIDER_virtual/kernel = "linux-hardkernel-odroid"
-PREFERRED_PROVIDER_virtual/bootloader = "u-boot-odroidxu-kvm"
-PREFERRED_PROVIDER_u-boot = "u-boot-odroidxu-kvm" 
 
 KERNEL_IMAGETYPE = "uImage"
 
