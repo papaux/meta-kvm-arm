@@ -48,7 +48,7 @@ else
 fi
 
 if mount | grep -q $1
-then 
+then
     echo
     echo "ERROR: Partitions of device $1 are currently mounted. Please umount and try again."
     exit 0
@@ -126,6 +126,8 @@ sync
 # cleaning
 sudo umount $bootdev
 sudo umount $rootdev
+sudo eject $device
+
 
 echo
 echo "Done. It is now safe to eject and remove your SD-Card."
