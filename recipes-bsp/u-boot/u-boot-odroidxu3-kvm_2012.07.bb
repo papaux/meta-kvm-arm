@@ -36,9 +36,6 @@ SRC_URI = "git://github.com/hardkernel/u-boot.git;protocol=https;branch=${BRANCH
 SRCREV = "7a2a0237a967ba1864b24d2380f5e92141d4349c"
 BRANCH ?= "odroidxu3-v2012.07"
 
-UBOOT_ENTRYPOINT = "0x40008000"
-UBOOT_LOADADDRESS = "0x40008000"
-
 
 do_deploy_append () {
     install -d ${DEPLOYDIR}

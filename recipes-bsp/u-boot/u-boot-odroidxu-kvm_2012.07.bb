@@ -36,9 +36,6 @@ SRC_URI = "git://github.com/FiachAntaw/u-boot.git;protocol=https;branch=${BRANCH
 SRCREV = "e71ef9c081cfffcc0372c1edc2fde0386d755a94"
 BRANCH ?= "odroid-v2012.07-virt"
 
-UBOOT_ENTRYPOINT = "0x40008000"
-UBOOT_LOADADDRESS = "0x40008000"
-
 
 do_deploy_append () {
     install -d ${DEPLOYDIR}
