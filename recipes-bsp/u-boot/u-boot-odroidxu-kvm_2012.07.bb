@@ -10,6 +10,6 @@ SRC_URI = "git://github.com/hardkernel/u-boot.git;protocol=https;branch=${BRANCH
 		   file://${SD_INST};md5=267b8e23add6932a0a069d9e24695f65 \
 		  "
 
-# This commit corresponds to odroid-v2012.07-virt latest commit at May 30 2014
+# This commit corresponds to odroid-v2012.07
 SRCREV = "e71ef9c081cfffcc0372c1edc2fde0386d755a94"
 BRANCH = "odroid-v2012.07"
