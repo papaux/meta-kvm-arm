@@ -7,6 +7,6 @@ KERNEL_DEVICETREE_odroidxu3-kvm = "exynos5422-odroidxu3.dtb"
 
 BRANCH = "odroidxu3-3.10.y"
 
-# Commit from Wed Sep 24 2014
-SRCREV = "2f4ae31040d6fca3fae303f6b65d8e219d416133"
+# Commit from Wed Oct 08 2014
+SRCREV = "c4ed13b1474a09066057ef01f301d79bd3fe4161"
 PV = "3.10.54"
