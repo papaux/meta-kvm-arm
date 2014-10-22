@@ -1,5 +1,14 @@
 This README file contains information on the contents of the
-omap5-kvm layer.
+meta-kvm-arm layer.
+
+It adds support for KVM virtualization on ARM platforms.
+Supported platforms are:
+ - TI OMAP 5432 EVM   (omap5-evm-kvm)
+ - ODROID-XU          (odroidxu-kvm)
+ - ODROID-XU3         (odroidxu3-kvm)
+
+This layer adds a new image for virtualization on ARM
+  kvm-image-extend
 
 Please see the corresponding sections below for details.
 
