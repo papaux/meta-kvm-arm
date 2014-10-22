@@ -6,9 +6,6 @@ DESCRIPTION = "Custom u-boot bootloader for omap5 with kvm support"
 PV = "2013.07"
 PR = "r0+gitr${SRCPV}"
 
-SRC_URI = "git://github.com/papaux/u-boot-omap5.git;protocol=https;branch=${BRANCH} \
-          file://u-boot-omap-kvm-boot.src.sd.3-12;md5=036a2e04c8d52adfe06259e79f5e45bf"
-
 BRANCH ?= "v2013.07-omap5-usbnet-hyp"
 
 # This commit corresponds to ti2013.04.00 release tag
@@ -18,27 +15,18 @@ SPL_BINARY = "MLO"
 SPL_UART_BINARY = "u-boot-spl.bin"
 
 # Copy the boot script
-SPL_BOOTSCR_BINARY ?= "u-boot-omap-kvm-boot.src.sd.3-12"
-SPL_BOOTSCR_IMAGE ?= "${SPL_BOOTSCR_BINARY}-${MACHINE}-${PV}-${PR}"
-SPL_BOOTSCR_SYMLINK ?= "${SPL_BOOTSCR_BINARY}-${MACHINE}"
+SPL_BOOTSCR ?= "u-boot-omap-kvm-boot.src.sd.3-12"
 
+SD_INST = "install_on_sd_card.sh"
 
-do_install_append () {
-    if [ "x${SPL_BOOTSCR_BINARY}" != "x" ]
-    then
-        install ${WORKDIR}/${SPL_BOOTSCR_BINARY} ${D}/boot/${SPL_BOOTSCR_IMAGE}
-        ln -sf ${SPL_BOOTSCR_IMAGE} ${D}/boot/${SPL_BOOTSCR_BINARY}
-    fi
-}
+SRC_URI = "git://github.com/papaux/u-boot-omap5.git;protocol=https;branch=${BRANCH} \
+          file://u-boot-omap-kvm-boot.src.sd.3-12;md5=036a2e04c8d52adfe06259e79f5e45bf \
+          file://${SD_INST};md5=4667c783d6c148db7a0618b0e8e01c4b"
+
 
 do_deploy_append () {
-    cd ${DEPLOYDIR}
-    if [ "x${SPL_BOOTSCR_BINARY}" != "x" ]
-    then
-        install ${WORKDIR}/${SPL_BOOTSCR_BINARY} ${DEPLOYDIR}/${SPL_BOOTSCR_IMAGE}
-        rm -f ${DEPLOYDIR}/${SPL_BOOTSCR_BINARY} ${DEPLOYDIR}/${SPL_BOOTSCR_SYMLINK}
-        ln -sf ${SPL_BOOTSCR_IMAGE} ${DEPLOYDIR}/${SPL_BOOTSCR_BINARY}
-        ln -sf ${SPL_BOOTSCR_IMAGE} ${DEPLOYDIR}/${SPL_BOOTSCR_SYMLINK}
-    fi
+    install -d ${DEPLOYDIR}
+    cp -v ${WORKDIR}/${SPL_BOOTSCR} ${DEPLOYDIR}
+    cp -v ${WORKDIR}/${SD_INST} ${DEPLOYDIR}
 }
 

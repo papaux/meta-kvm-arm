@@ -27,7 +27,7 @@ SRC_URI = "git://github.com/hardkernel/u-boot.git;protocol=https;branch=${BRANCH
 		   file://${BL2};md5=a7702c669373ccddbb23e35f3ebeecba \
 		   file://${TZSW};md5=fd01dda20b999e0b731c7063431a42b3 \
 		   file://${BOOT_INI};md5=760e311d503fc4efe91f6a537f101fdf \
-		   file://${SD_INST};md5=267b8e23add6932a0a069d9e24695f65 \
+		   file://${SD_INST} \
 		  "
 
 do_deploy_append () {
