@@ -8,6 +8,7 @@ SRC_URI = "git://github.com/hardkernel/u-boot.git;protocol=https;branch=${BRANCH
 		   file://${TZSW};md5=fd01dda20b999e0b731c7063431a42b3 \
 		   file://${BOOT_INI};md5=760e311d503fc4efe91f6a537f101fdf \
 		   file://${SD_INST};md5=267b8e23add6932a0a069d9e24695f65 \
+		   file://u-boot_nfsboot.patch;md5=00fd8c4e7887ffecade3938a83b20324 \
 		  "
 
 # This commit corresponds to odroidxu3-v2012.07 latest commit at Fri Sep 19 2014 (HYP mode for the OdroidXU3 CPUs)
