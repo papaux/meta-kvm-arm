@@ -10,6 +10,6 @@ SRC_URI = "git://github.com/hardkernel/u-boot.git;protocol=https;branch=${BRANCH
 		   file://${SD_INST};md5=267b8e23add6932a0a069d9e24695f65 \
 		  "
 
-# This commit corresponds to odroidxu3-v2012.07 latest commit at Fri Sep 19 2014 (HYP mode for the OdroidXU3 CPUs)
-SRCREV = "7a2a0237a967ba1864b24d2380f5e92141d4349c"
+# This commit corresponds to odroidxu3-v2012.07 latest commit at Oct 27 2014 (Exynos5422 timer issue have been fixed)
+SRCREV = "e029d5680e80c57a1e3ae32d888d166e2dec0056"
 BRANCH ?= "odroidxu3-v2012.07"
