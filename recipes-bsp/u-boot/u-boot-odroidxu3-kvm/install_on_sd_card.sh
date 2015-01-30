@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Geoffrey Papaux
+# 2015: Geoffrey Papaux
 #
 # This script uses parts of:
 #     - "sd_fusing.sh"
@@ -30,6 +30,47 @@
 # THE SOFTWARE.
 #
 
+
+#######################################
+# function definitions
+#######################################
+function get_rootfs_image()
+{
+    echo
+    echo "Select the rootfs image you want to extract to the SD card:"
+    rootfs_image_id=0
+    for f in  ${rootfs_images[@]}
+    do
+        echo [${rootfs_image_id}] $f
+        rootfs_image_id=$((rootfs_image_id+1))
+    done
+
+    echo
+    read -p "Enter the image id: " selected_image_id
+
+    if [ $selected_image_id -lt $rootfs_image_id -a $selected_image_id -ge 0 ]
+    then
+        rootfs_image=${rootfs_images[$selected_image_id]}
+    else
+        echo "ERROR: Invalid selection"
+        exit
+    fi
+
+    if [ -e $rootfs_image ]
+    then
+        echo "Image selected: " $rootfs_image
+    else
+        echo "ERROR: ${rootfs_images[$selected_image_id]} does not exist. Please generate the image before."
+        rootfs_image=""
+    fi
+}
+
+
+
+
+#######################################
+# script start here
+#######################################
 if [ -z $1 ]
 then
     echo "usage: $0 <SD Reader's device file>"
@@ -47,6 +88,11 @@ else
     exit 0
 fi
 
+for i in `ls -1 $1?`; do
+ echo "unmounting device '$i'"
+ umount $i 2>/dev/null
+done
+
 if mount | grep -q $1
 then
     echo
@@ -57,12 +103,22 @@ fi
 # stop on error
 set -e
 
+# define parameters
 device="$1"
-
+dtb_file="exynos5422-odroidxu3.dtb"
 bl1_pos=1
 bl2_pos=31
 uboot_pos=63
 tzsw_pos=719
+rootfs_images=("kvm-image-extended-odroidxu3-kvm.tar.gz" "kvm-image-lab-odroidxu3-kvm.tar.gz")
+
+# get root fs image to write
+get_rootfs_image
+if [ ! -e $rootfs_image ]
+then
+    echo "Invalid rootfs image: $rootfs_image"
+    exit
+fi
 
 # delete bootsector and partition table
 echo
@@ -114,11 +170,11 @@ echo
 echo "Copy boot.ini, uImage, dtb to BOOT partition..."
 sudo cp -v boot.ini $bootmountpoint/
 sudo cp -v uImage $bootmountpoint/
-sudo cp -v uImage-exynos5422-odroidxu3.dtb $bootmountpoint/exynos5422-odroidxu3.dtb
+sudo cp -v uImage-$dtb_file $bootmountpoint/$dtb_file
 
 echo
-echo "Extract root file system (kvm-image-extended-odroidxu3-kvm.tar.gz) to rootfs partition..."
-sudo tar xpf kvm-image-extended-odroidxu3-kvm.tar.gz -C $rootmountpoint/
+echo "Extract root file system ($rootfs_image) to rootfs partition..."
+sudo tar xpf "$rootfs_image" -C $rootmountpoint/
 
 # sync to sd-card
 sync

@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 # Script to create SD card for OMAP5 uevm.
 #
 # 22.10.2014: Adapted to be integrated in meta-kvm-arm by Geoffrey Papaux
@@ -10,6 +10,41 @@
 #
 
 VERSION="0.1"
+
+#######################################
+# function definitions
+#######################################
+function get_rootfs_image ()
+{
+    echo
+    echo "Select the rootfs image you want to extract to the SD card:"
+    rootfs_image_id=0
+    for f in  ${rootfs_images[@]}
+    do
+        echo [${rootfs_image_id}] $f
+        rootfs_image_id=$((rootfs_image_id+1))
+    done
+
+    echo
+    read -p "Enter the image id: " selected_image_id
+
+    if [ $selected_image_id -lt $rootfs_image_id -a $selected_image_id -ge 0 ]
+    then
+        rootfs_image=${rootfs_images[$selected_image_id]}
+    else
+        echo "ERROR: Invalid selection"
+        exit
+    fi
+
+    if [ -e $rootfs_image ]
+    then
+        echo "Image selected: " $rootfs_image
+    else
+        echo "ERROR: ${rootfs_images[$selected_image_id]} does not exist. Please generate the image before."
+        rootfs_image=""
+    fi
+}
+
 
 execute ()
 {
@@ -62,6 +97,13 @@ check_if_main_drive ()
 
 }
 
+
+
+
+#######################################
+# script start here
+#######################################
+
 # Check if the script was started as root or with sudo
 user=`id -u`
 [ "$user" != "0" ] && echo "++ Must be root/sudo ++" && exit
@@ -86,6 +128,15 @@ if [ ! -b $device ]; then
 fi
 
 check_if_main_drive
+
+# get root fs image to write
+rootfs_images=("kvm-image-extended-omap5-evm-kvm.tar.gz" "kvm-image-lab-omap5-evm-kvm.tar.gz")
+get_rootfs_image
+if [ ! -e $rootfs_image ]
+then
+    echo "Invalid rootfs image: $rootfs_image"
+    exit
+fi
 
 echo "************************************************************"
 echo "*         THIS WILL DELETE ALL THE DATA ON $device        *"
@@ -165,13 +216,12 @@ execute "cp uImage /tmp/sdk/$$/boot/"
 execute "cp uImage-omap5-uevm.dtb /tmp/sdk/$$/boot/omap5-uevm.dtb"
 execute "cp u-boot-omap-kvm-boot.src.sd.3-12 /tmp/sdk/$$/boot/boot.scr"
 
-ROOTFS=kvm-image-extended-omap5-evm-kvm.tar.gz
-if [ ! -f $ROOTFS ]
+if [ ! -f $rootfs_image ]
 then
 	echo "ERROR: failed to find rootfs tar in $ROOTFS"
 else
 	echo "Extracting filesystem on ${device}2 ..."
-	execute "tar zxf $ROOTFS -C /tmp/sdk/$$/rootfs"
+	execute "tar zxf $rootfs_image -C /tmp/sdk/$$/rootfs"
 fi
 
 sync
