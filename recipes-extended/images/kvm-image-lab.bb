@@ -1,4 +1,4 @@
-DESCRIPTION = "Image containing tools required for KVM virtualization with libvirt support. Comes with other benchmarking / performance debugging tools."
+DESCRIPTION = "Image containing tools required for KVM labs at HEIA-FR. Comes with other benchmarking / performance debugging tools as well as build tools."
 
 IMAGE_INSTALL = " \
     packagegroup-core-boot \
@@ -9,8 +9,12 @@ IMAGE_INSTALL = " \
     libvirt-virsh \
     perf \
     iperf \
+    iozone3 \
     procps \
     coreutils \
+    git \
+    valgrind \
+    packagegroup-core-buildessential \
     "
 #    kernel-module-kvm \
 #    kernel-module-kvm-intel \
@@ -24,6 +28,6 @@ IMAGE_FEATURES += "ssh-server-openssh"
 
 LICENSE = "MIT"
 
-inherit core-image
+inherit core-image 
 
 IMAGE_ROOTFS_SIZE = "512000"
