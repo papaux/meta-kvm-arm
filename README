@@ -1,6 +1,9 @@
 This README file contains information on the contents of the
 meta-kvm-arm layer.
 
+This layer has been developed as part of my thesis and my work
+at the College of Engineering and Architecture Fribourg.
+
 It adds support for KVM virtualization on ARM platforms.
 Supported platforms are:
  - TI OMAP 5432 EVM   (omap5-evm-kvm)
